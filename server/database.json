@@ -1,0 +1,20 @@
+{
+    "posts": [
+        {
+            "id": 0,
+            "title": "A Sample Post",
+            "likes": 20,
+            "user": 0,
+            "comments": "Sample comment"
+        }
+    ],
+    "users": [
+        {
+            "id": 0,
+            "username": "Username 1",
+            "email": "username1@gmail.com",
+            "password": "password",
+            "profile": "profile.png"
+        }
+    ]
+}
