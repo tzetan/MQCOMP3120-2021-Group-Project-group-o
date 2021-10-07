@@ -1,21 +1,21 @@
 const mongoose = require('mongoose')
 
-const url=process.env.MONGODB_URI
+const url = process.env.MONGODB_URI
 
-console.log('connecting to',url)
+console.log('connecting to', url)
 
-mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true})
-.then(result=>{
+mongoose.connect(url, { useNewUrlParser:true, useUnifiedTopology:true })
+.then(result => {
     console.log('connected to MongoDB')
 })
-.catch((error)=>{
-    console.log('error connected to MongoDB',error.message)
+.catch((error) => {
+    console.log('error connected to MongoDB', error.message)
 })
 
-const postSchema=new mongoose.Schema({
-    title:String,
-    likes:Number,
-    comments:Array
+const postSchema = new mongoose.Schema({
+    title: String,
+    likes: Number,
+    comments: Array
 })
 
 postSchema.set('toJSON', {
@@ -26,6 +26,6 @@ postSchema.set('toJSON', {
     }
   })
 
-const Post=mongoose.model("Post",postSchema)
+const Post = mongoose.model("Post", postSchema)
 
-module.exports=Post
+module.exports = Post

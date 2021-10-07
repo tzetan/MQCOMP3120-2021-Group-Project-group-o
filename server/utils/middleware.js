@@ -1,16 +1,16 @@
-const requestLogger=(request,response,next)=>{
-    console.log(request.method,response.path)
+const requestLogger = (request, response, next) => {
+    if (process.env.NODE_ENV === "development") {
+    console.log(request.method, response.path)
     console.log(request.body)
-    console.log('---')
+    console.log("---")
+    }
     next()
 }
 
-
-const errorMiddleware=(error,request,response,next)=>{
-    console.log("ERROR",error.name)
-    response.status(500).send({error:error.name})
+const errorMiddleware = (error, request, response, next) => {
+    console.log("ERROR", error.name)
+    response.status(500).send({ error: error.name })
     next()
 }
 
-
-module.exports={requestLogger,errorMiddleware}
+module.exports = { requestLogger, errorMiddleware }
