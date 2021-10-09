@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.myNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: right; 
+  min-height: 10vh;
+  padding-right: 10px;
+  background: #282c34 ;
+  color: white;
+}
+
+.nav-Links {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none; 
+}
+
+.nav-Links li{
+  color: white;
+}
+
+.postDetail {
+  padding-top: 8%;
+}
