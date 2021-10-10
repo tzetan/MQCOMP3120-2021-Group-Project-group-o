@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router} from "react-router-dom";
-import Poem from "./Posts/post";
-import postservice from './route';
+import Poem from "./post";
+import postservice from '../Services/route';
 
 
 const PostsHome = () => {
