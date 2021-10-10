@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/posts
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+    "title": "testing",
+    "likes": "20",
+    "comments": "hop working"
+    
+}
