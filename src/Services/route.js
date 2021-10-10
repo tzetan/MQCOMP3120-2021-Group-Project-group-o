@@ -26,4 +26,9 @@ const del = (postid) => {
                 .then(response => response.data)
 }
 
-export default {getAll, create, update, specific, delete: del} 
+const login = ({username, password}) => {
+    return axios.post('/auth/login', {username, password})
+                .then(response => response.data)
+}
+
+export default {getAll, create, update, specific, delete: del, login} 
