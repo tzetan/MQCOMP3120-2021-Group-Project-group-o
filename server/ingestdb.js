@@ -1,32 +1,21 @@
+require("dotenv").config()
 const mongoose = require("mongoose")
+const Post = require("./models/posts")
+const fs = require("fs")
 
-const url = process.env.MONGODB_URI
+// Load data from JSON file into memory
+const rawData = fs.readFileSync("server/database.json")
+const data = JSON.parse(rawData)
 
-console.log("connecting to", url)
+data.posts.map(record => {
 
-mongoose
-  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => {
-    console.log("connected to MongoDB")
-  })
-  .catch((error) => {
-    console.log("error connected to MongoDB", error.message)
-  })
-
-const postSchema = new mongoose.Schema({
-  title: String,
-  likes: Number,
-  comments: Array,
+    console.log(record)
+    const newPost = new Post({
+        title: record.title,
+        likes: record.likes,
+        comments: record.comments
+    })
+    newPost.save().then(result => {
+        console.log("like record saved")
+    })
 })
-
-postSchema.set("toJSON", {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  },
-})
-
-const Post = mongoose.model("Post", postSchema)
-
-module.exports = Post
