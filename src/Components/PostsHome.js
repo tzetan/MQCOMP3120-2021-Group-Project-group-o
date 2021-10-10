@@ -11,7 +11,7 @@ const PostsHome = () => {
   useEffect(() => {
     console.log("response:")
     postservice.getAll()
-    .then((data) => {
+    .then(data => {
       console.log("response: ", data)
       setposts(data)
     })

@@ -7,15 +7,15 @@ function Nav() {
         <div className="myNav">
             <ul className="nav-Links">
               <Link to="/">
-                <li><a>Home</a></li>
+                <li>Home</li>
               </Link>
 
               <Link to="posts">
-                <li><a>Posts</a></li>
+                <li>Posts</li>
               </Link>
 
               <Link to="add_post">
-                <li><a>Add Post</a></li>
+                <li>Add Post</li>
               </Link>
               
             </ul>
