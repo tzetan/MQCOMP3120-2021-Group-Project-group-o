@@ -2,8 +2,43 @@
     "posts": [
         {
             "id": 0,
-            "title": "A Sample Post",
+            "title": "'I'm going to rush out and buy this book! I can totally see a clown version of Will Smith.'  \n- Hit the Spoof",
             "likes": 20,
+            "user": 0,
+            "comments": "Sample comment"
+        },
+        {
+            "id": 1,
+            "title": "If I'd become a footballer, I wouldn't have even had a rifle on me.",
+            "likes": 345,
+            "user": 0,
+            "comments": "Sample comment"
+        },
+        {
+            "id": 2,
+            "title": "Dear reader, I wish I could tell you that we stopped the werewolves.",
+            "likes": 456,
+            "user": 1,
+            "comments": "Sample comment"
+        },
+        {
+            "id": 3,
+            "title": "I have two things on my mind: cherry pie and how I'm going to get home.",
+            "likes": 21,
+            "user": 1,
+            "comments": "Sample comment"
+        },
+        {
+            "id": 4,
+            "title": "I would have defeated the zombies if it weren't for Estelle.",
+            "likes": 67,
+            "user": 1,
+            "comments": "Sample comment"
+        },
+        {
+            "id": 5,
+            "title": "There are only three things in life that truly matter: chocolate, politics and love.",
+            "likes": 420,
             "user": 0,
             "comments": "Sample comment"
         }
@@ -11,9 +46,23 @@
     "users": [
         {
             "id": 0,
-            "username": "Username 1",
-            "email": "username1@gmail.com",
-            "password": "password",
+            "username": "adorablejude",
+            "email": "aj@gmail.com",
+            "password": "$2b$10$38/otLIgObTvC5Xh4UgMgOdY05VIJb12.Pn1k8RDbTA0cZFkrh3g6",
+            "profile": "profile.png"
+        },
+        {
+            "id": 1,
+            "username": "lewisthelouis",
+            "email": "ltl@gmail.com",
+            "password": "$2b$10$7UsP3w1soZzo30zAuU3Gz.skD/Nx1wkT/FNFiJWYl4FSJWZMmendW",
+            "profile": "profile.png"
+        },
+        {
+            "id": 2,
+            "username": "mean_dean",
+            "email": "md@gmail.com",
+            "password": "$2b$10$BYjYzWysjZJpU7HZqHwYiedGfWPanFHPOgDzrFTUaTJGc0xFoKsse",
             "profile": "profile.png"
         }
     ]
