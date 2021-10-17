@@ -67,6 +67,36 @@ apiRouter.post("/api/posts", (request, response) => {
     }
 })
 
+apiRouter.put("/api/posts/:id", (request, response) => {
+    const token = getTokenFrom(request)
+    const decodedToken = jwt.verify(token, SECRET)
+    // console.log(token)
+
+    if (!token || !decodedToken.id) {
+        return response.status(401).json({error: "permission denied"})
+    }
+    const body = request.body
+
+
+    const post = {
+        title: body.title,
+        likes: body.likes,
+        comments: body.comments,
+        user: decodedToken.id
+    }
+
+    if (!body.title) {
+        response.status(400).json({
+            error: 'title missing'
+        })
+    } else {
+        Post.findByIdAndUpdate(request.params.id,post)
+        .then(result=>{
+            response.json(result)
+        })
+    }
+    
+})
 
 apiRouter.post("/api/login", async (request, response) => {
     const { username, password } = request.body
