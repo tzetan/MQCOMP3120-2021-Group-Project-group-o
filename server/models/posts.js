@@ -25,7 +25,8 @@ doConnect()
 const postSchema = new mongoose.Schema({
     title: String,
     likes: Number,
-    comments: Array
+    comments: Array,
+    user:Number
 })
 
 postSchema.set('toJSON', {

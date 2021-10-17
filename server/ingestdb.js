@@ -13,7 +13,8 @@ data.posts.map(record => {
     const newPost = new Post({
         title: record.title,
         likes: record.likes,
-        comments: record.comments
+        comments: record.comments,
+        user:record.user
     })
     newPost.save().then(result => {
         console.log("like record saved")
