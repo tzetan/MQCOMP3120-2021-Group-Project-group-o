@@ -27,7 +27,7 @@ const del = (postid) => {
 }
 
 const login = ({username, password}) => {
-    return axios.post('/auth/login', {username, password})
+    return axios.post(baseURL + '/login', {username, password})
                 .then(response => response.data)
 }
 

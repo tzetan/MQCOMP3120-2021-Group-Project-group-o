@@ -26,7 +26,8 @@ const LoginForm = ({user, setUser}) => {
     if (user) {
         return (
             <div className="row">
-                <p>Logged in {user.name}</p>
+            
+                <p>Loggggged in {user.username}</p>
             </div>
         )
     } else {
