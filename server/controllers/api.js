@@ -31,6 +31,13 @@ apiRouter.get("/api/posts", (request, response) => {
     })
 })
 
+apiRouter.get("/api/posts/:id", (request, response) => {
+    Post.findById(request.params.id).then((result)=>{
+        console.log(result)
+        response.json(result)
+    })    
+})
+
 apiRouter.post("/api/posts", (request, response) => {
     const token = getTokenFrom(request)
     const decodedToken = jwt.verify(token, SECRET)
@@ -46,8 +53,7 @@ apiRouter.post("/api/posts", (request, response) => {
         title: body.title,
         likes: body.likes,
         comments: body.comments,
-        user: decodedToken.id,
-        id: data.units.length
+        user: decodedToken.id
     })
 
     if (!body.title) {
@@ -60,6 +66,7 @@ apiRouter.post("/api/posts", (request, response) => {
         })
     }
 })
+
 
 apiRouter.post("/api/login", async (request, response) => {
     const { username, password } = request.body
@@ -87,6 +94,8 @@ apiRouter.post("/api/login", async (request, response) => {
         return response.status(401).json({ error: "invalid username or passord" })
     }
 })
+
+
 
 apiRouter.delete("/api/posts/:id", (request, response, next) => {
     Post.findByIdAndRemove(request.params.id)
