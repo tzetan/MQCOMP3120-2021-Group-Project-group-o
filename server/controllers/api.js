@@ -41,7 +41,7 @@ apiRouter.get("/api/posts/:id", (request, response) => {
 apiRouter.post("/api/posts", (request, response) => {
     const token = getTokenFrom(request)
     const decodedToken = jwt.verify(token, SECRET)
-    // console.log(token)
+    console.log(decodedToken)
 
     if (!token || !decodedToken.id) {
         return response.status(401).json({error: "permission denied"})

@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import LoginForm from './LoginForm'
 
-function Login() {
-    const [user, setUser] = useState(null)
+const Login = ({user, setUser}) => {
     return (
         <div className="Loginrow">
           <LoginForm user={user} setUser={setUser}/>
