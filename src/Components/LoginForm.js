@@ -14,20 +14,25 @@ const LoginForm = ({user, setUser}) => {
         .then(data => {
                 console.log("Login Success:", data)
                 setUser(data)
+                setErrorMessage("")
         })
         .catch(error => {
             console.log("Login Error", error)
+            setErrorMessage("Wrong username and/or password. Please try again.")
         })
     
     }
-    const handleClick = () => {
-            setErrorMessage("Wrong username and/or password. Please try again.")
-        }
+
+    const logoutHandler = () => {
+        setUser(null)
+    }
+
     if (user) {
         return (
             <div className="row">
-            
-                <p>Loggggged in {user.username}</p>
+                <p>Logged in As {user.username}
+                    <button onClick={logoutHandler}>Logout</button>
+                </p>
             </div>
         )
     } else {
@@ -43,7 +48,7 @@ const LoginForm = ({user, setUser}) => {
                             <input id="password" name="password" type="password" onChange={e => setPassword(e.target.value)} />
                        
                      
-                            <input onClick ={handleClick} type="submit" value="Login"/>
+                            <input type="submit" value="Login"/>
                             {errorMessage && <div className="error">  {errorMessage} </div>}
                     </div>
             </form> 
