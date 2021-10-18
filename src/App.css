@@ -62,3 +62,7 @@
 .postDetail {
   padding-top: 8%;
 }
+
+.add_form {
+  list-style-type: none;
+}
