@@ -3,41 +3,41 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Link} from "react-router-dom";
 import postservice from '../Services/route';
 
-const Poem = ({poem, deleteFn}) => {
+const Post = ({post, deleteFn}) => {
 
-  const fetchPoem = (votes) => {
+  const fetchPost = (votes) => {
     console.log("Fetching...")
-    postservice.specific(poem.id)
+    postservice.specific(post.id)
     .then((response) => {
       console.log("response:", response)
       response.votes = votes+1;
       console.log("votes added----:", response.votes)
-      poem.votes = response.votes;
+      post.votes = response.votes;
     })
   }
 
-  const [num, setNum] = useState(poem.votes)
+  const [num, setNum] = useState(post.votes)
 
   const increment = () => {
       console.log("INNNNNNNNN", num)
       setNum(num+1)
-      fetchPoem(num);
+      fetchPost(num);
   }
 
   return (
     <Router>
       <div>
         
-      <h3 key={poem.id}>
-        <Link to={`/api/posts/${poem.id}`}>{poem.title}</Link>
+      <h3 key={post.id}>
+        <Link to={`/api/posts/${post.id}`}>{post.title}</Link>
       </h3>
-      <h5>{poem.author}</h5>
-      <button name="votes" onClick={increment}>Vote = {poem.votes} </button> 
-      <button onClick={() => deleteFn(poem)}>Delete</button>
+      <h5>{post.author}</h5>
+      <button name="votes" onClick={increment}>Vote = {post.votes} </button> 
+      <button onClick={() => deleteFn(post)}>Delete</button>
       </div>
     </Router>
   )
 
 }
 
-export default Poem
+export default Post
