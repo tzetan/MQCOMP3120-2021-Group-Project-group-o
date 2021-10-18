@@ -46,23 +46,23 @@
     "users": [
         {
             "id": 0,
-            "username": "adorablejude",
-            "email": "aj@gmail.com",
-            "password": "$2b$10$38/otLIgObTvC5Xh4UgMgOdY05VIJb12.Pn1k8RDbTA0cZFkrh3g6",
+            "username": "jude",
+            "email": "jude@gmail.com",
+            "password": "$2b$10$ynGhHrKJo20C8jwUiroa/eQhnlX2Pfot1mpVYKRwkvbk2h2lmuAL2",
             "profile": "profile.png"
         },
         {
             "id": 1,
             "username": "lewisthelouis",
             "email": "ltl@gmail.com",
-            "password": "$2b$10$7UsP3w1soZzo30zAuU3Gz.skD/Nx1wkT/FNFiJWYl4FSJWZMmendW",
+            "password": "$2b$10$6ZN6JvFgWSZwtuOG2WoU9OyGcDjtsd3XFpUttA14RCjbVhw/Jj3K.",
             "profile": "profile.png"
         },
         {
             "id": 2,
             "username": "mean_dean",
             "email": "md@gmail.com",
-            "password": "$2b$10$BYjYzWysjZJpU7HZqHwYiedGfWPanFHPOgDzrFTUaTJGc0xFoKsse",
+            "password": "$2b$10$UAT2QtzUJA3O7YBznvWC.OBLOHkPbThEfJe2FWlSlC.o9VI3s3w6y",
             "profile": "profile.png"
         }
     ]
