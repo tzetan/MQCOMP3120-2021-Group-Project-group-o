@@ -11,10 +11,11 @@ import postService from './Services/route';
 
 function App() {
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([])
+  const [user, setUser] = useState(null)
 
   const addNewPost = (newPosts) => {
-    postService.create(newPosts)
+    postService.create(newPosts, user)
     .then(data => {
       console.log("POST response", data)
       setPosts([...posts, data])
@@ -27,7 +28,7 @@ function App() {
     <Router>
         <div className="App">
             <Nav/>
-            <Login/>
+            <Login user={user} setUser={setUser}/>
             
             <Route path="/" exact component={About}/> 
 
