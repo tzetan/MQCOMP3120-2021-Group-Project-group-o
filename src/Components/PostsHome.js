@@ -42,7 +42,7 @@ const PostsHome = () => {
       })
       }else{
 
-      const newPost={...post,votes:1}
+      const newPost={...post,likes:1}
       console.log("updata vote in item",newPost)
       postservice.update(newPost)
       .then(data=>{
