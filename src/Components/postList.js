@@ -3,20 +3,20 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import postservice from '../Services/route';
 
-const Post = ({post, deleteFn}) => {
+const Post = ({post, deleteFn,addLike}) => {
 
-  const fetchPost = (votes) => {
+  const fetchPost = (likes) => {
     console.log("Fetching...")
     postservice.specific(post.id)
     .then((response) => {
       console.log("response:", response)
-      response.votes = votes+1;
-      console.log("votes added----:", response.votes)
-      post.votes = response.votes;
+      response.likes = likes+1;
+      console.log("votes added----:", response.likes)
+      post.likes = response.likes;
     })
   }
 
-  const [num, setNum] = useState(post.votes)
+  const [num, setNum] = useState(post.likes)
 
   const increment = () => {
       console.log("INNNNNNNNN", num)
@@ -31,7 +31,7 @@ const Post = ({post, deleteFn}) => {
             <Link to={`/posts/${post.id}`}>{post.title}</Link>
         </h3>
         <h5>{post.author}</h5>
-        <button name="votes" onClick={increment}>Vote = {post.votes} </button> 
+        <button onClick={()=> addLike(post)}>Like {post.likes} </button> 
         <button onClick={() => deleteFn(post)}>Delete</button>
       </div>
   )
