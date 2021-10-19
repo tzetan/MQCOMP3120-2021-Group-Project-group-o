@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import postservice from '../Services/route';
 
 const Post = ({post, deleteFn}) => {
@@ -25,17 +25,15 @@ const Post = ({post, deleteFn}) => {
   }
 
   return (
-    <Router>
       <div>
         
-      <h3 key={post.id}>
-        <Link to={`/api/posts/${post.id}`}>{post.title}</Link>
-      </h3>
-      <h5>{post.author}</h5>
-      <button name="votes" onClick={increment}>Vote = {post.votes} </button> 
-      <button onClick={() => deleteFn(post)}>Delete</button>
+        <h3 key={post.id}>
+            <Link to={`/posts/${post.id}`}>{post.title}</Link>
+        </h3>
+        <h5>{post.author}</h5>
+        <button name="votes" onClick={increment}>Vote = {post.votes} </button> 
+        <button onClick={() => deleteFn(post)}>Delete</button>
       </div>
-    </Router>
   )
 
 }

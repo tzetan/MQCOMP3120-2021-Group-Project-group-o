@@ -1,12 +1,13 @@
 import './App.css';
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route} from "react-router-dom";
-import postsHome from "./Components/PostsHome";
+import { BrowserRouter as Router, Switch, Route, Link, withRouter} from "react-router-dom";
+import PostsHome from "./Components/PostsHome";
 import Nav from "./Components/nav";
 import About from "./Components/about";
 import Login from "./Components/Login";
-import Add_Post from "./Components/add_post";
+import PoemForm from "./Components/add_post";
 import postService from './Services/route';
+import SinglePost from './Components/post';
 
 
 function App() {
@@ -29,19 +30,31 @@ function App() {
         <div className="App">
             <Nav/>
             <Login user={user} setUser={setUser}/>
-            
-            <Route path="/" exact component={About}/> 
 
-            <Route path="/add_post">
-              <Add_Post updateFn={addNewPost}/>
-            </Route>
-
-            <Route path="/posts" exact component={postsHome}/> 
             
+            <Switch>
+                
+                <Route path="/posts/:id">
+                    <SinglePost />
+                </Route>
+
+                <Route path="/add_post">
+                    <PoemForm updateFn={addNewPost}/>
+                </Route>
+
+                <Route path="/posts" > 
+                    <PostsHome />
+                </Route>
+                
+                <Route path="/"> 
+                    <About/>
+                </Route>
+
+            </Switch>
 
         </div>
       </Router>
   );
 }
 
-export default App;
+export default withRouter(App);

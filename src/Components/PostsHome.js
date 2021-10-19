@@ -30,7 +30,6 @@ const PostsHome = () => {
 
   console.log("response:")
   return (
-    <Router>
       <div className="App">
           <div>
             <h1 styles="text-align: center;">List of Posts!</h1>
@@ -44,7 +43,6 @@ const PostsHome = () => {
           </ul>
           
       </div>
-    </Router>
   );
 }
 

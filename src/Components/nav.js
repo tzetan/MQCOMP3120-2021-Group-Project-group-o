@@ -10,11 +10,11 @@ function Nav() {
                 <li>Home</li>
               </Link>
 
-              <Link to="posts">
+              <Link to="/posts">
                 <li>Posts</li>
               </Link>
 
-              <Link to="add_post">
+              <Link to="/add_post">
                 <li>Add Post</li>
               </Link>
               
