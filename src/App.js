@@ -5,7 +5,7 @@ import PostsHome from "./Components/PostsHome";
 import Nav from "./Components/nav";
 import About from "./Components/about";
 import Login from "./Components/Login";
-import PoemForm from "./Components/add_post";
+import PostForm from "./Components/add_post";
 import postService from './Services/route';
 import SinglePost from './Components/post';
 
@@ -39,7 +39,7 @@ function App() {
                 </Route>
 
                 <Route path="/add_post">
-                    <PoemForm updateFn={addNewPost}/>
+                    <PostForm user={user} updateFn={addNewPost}/>
                 </Route>
 
                 <Route path="/posts" > 
