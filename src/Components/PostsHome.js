@@ -28,6 +28,31 @@ const PostsHome = () => {
     })
   }
 
+  const addLike= (post) =>{
+    console.log("addVote",post)
+      const newPost={...post,likes:post.likes+1}
+      console.log("updata likes in item",newPost)
+      if(newPost.likes>=1){
+        console.log("working")
+        postservice.update(newPost)
+      .then(data=>{
+        console.log("got response",data)
+   
+        setposts(data)
+      })
+      }else{
+
+      const newPost={...post,votes:1}
+      console.log("updata vote in item",newPost)
+      postservice.update(newPost)
+      .then(data=>{
+      console.log("got response",data)
+      setposts(data)    
+      })
+      }
+      
+  }
+
   console.log("response:")
   return (
       <div className="App">
@@ -38,7 +63,7 @@ const PostsHome = () => {
           
           <ul>
             {posts.map((post) => (
-              <Post key={post.id} post={post} deleteFn={deletePost}/>  
+              <Post key={post.id} post={post} deleteFn={deletePost} addLike={addLike}/>  
             ))}
           </ul>
           
