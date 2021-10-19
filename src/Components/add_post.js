@@ -3,7 +3,7 @@ import "../App.css";
 import AddedPost from "../Posts/addedPost";
 
 
-const PoemForm = ({updateFn}) => {
+const PostForm = ({user,updateFn}) => {
 
     const initialState = {title: '', author: '', text: ''}
 
@@ -39,37 +39,41 @@ const PoemForm = ({updateFn}) => {
         setState('added')
     }
     
-
-    return (
-        <div>
-            <br/>
-        <form onSubmit={formHandler}>
-            <ul id="add_form">
-                <li>
-                    <label htmlFor="title">Post Subject</label>
-                    <br/>
-                    <input name="title" onChange={updateField}></input>
-                </li>
+    if(user){
+        return (
+            <div>
                 <br/>
-                <li>
-                    <label htmlFor="author">Post Author</label>
+            <form onSubmit={formHandler}>
+                <ul id="add_form">
+                    <li>
+                        <label htmlFor="title">Post Subject</label>
+                        <br/>
+                        <input name="title" onChange={updateField}></input>
+                    </li>
                     <br/>
-                    <input name="author" onChange={updateField}></input>
-                </li>
-                <br/>
-                <li>
-                    <label htmlFor="text">Text</label>
+                    <li>
+                        <label htmlFor="author">Post Author</label>
+                        <br/>
+                        <input name="author" onChange={updateField}></input>
+                    </li>
                     <br/>
-                    <input name="text" onChange={updateField}></input>
-                </li>
-                <br/>
-            </ul>
-
-            <button type="submit">Submit</button>
-        </form>
-        {state === 'added' && (<AddedPost title={title} author={author} text={text} />)}
-        </div>
-    )
+                    <li>
+                        <label htmlFor="text">Text</label>
+                        <br/>
+                        <input name="text" onChange={updateField}></input>
+                    </li>
+                    <br/>
+                </ul>
+    
+                <button type="submit">Submit</button>
+            </form>
+            {state === 'added' && (<AddedPost title={title} author={author} text={text} />)}
+            </div>
+        )
+    }else{
+        return (<p>Login to uplaod the posts</p>)
+    }
+    
 }
 
-export default PoemForm
+export default PostForm
