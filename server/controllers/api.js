@@ -32,7 +32,8 @@ apiRouter.get("/api/posts", (request, response) => {
 })
 
 apiRouter.get("/api/posts/:id", (request, response) => {
-    Post.findById(request.params.id).then((result)=>{
+    Post.findById(request.params.id)
+    .then((result)=>{
         console.log(result)
         response.json(result)
     })    
@@ -67,38 +68,9 @@ apiRouter.post("/api/posts", (request, response) => {
     }
 })
 
-apiRouter.put("/api/posts/:id", (request, response) => {
-    const token = getTokenFrom(request)
-    const decodedToken = jwt.verify(token, SECRET)
-    // console.log(token)
-
-    if (!token || !decodedToken.id) {
-        return response.status(401).json({error: "permission denied"})
-    }
-    const body = request.body
-
-
-    const post = {
-        title: body.title,
-        likes: body.likes,
-        comments: body.comments,
-        user: decodedToken.id
-    }
-
-    if (!body.title) {
-        response.status(400).json({
-            error: 'title missing'
-        })
-    } else {
-        Post.findByIdAndUpdate(request.params.id,post)
-        .then(result=>{
-            response.json(result)
-        })
-    }
-    
-})
 
 apiRouter.post("/api/login", async (request, response) => {
+    
     const { username, password } = request.body
 
     const user = getUser(username)
@@ -125,7 +97,26 @@ apiRouter.post("/api/login", async (request, response) => {
     }
 })
 
+apiRouter.put("/api/posts/:id", (request, response, next) => {
+    
+    const body = request.body
 
+    const post = {
+        comments: body.comments,
+        likes: body.likes,
+        title: body.title
+
+    }
+
+    Post.findByIdAndUpdate(request.params.id,post)
+    .then(result=>{
+        Post.find({}).then((result) => {
+            response.json(result)
+        })
+    })
+    .catch((error) => next(error))
+    
+})
 
 apiRouter.delete("/api/posts/:id", (request, response, next) => {
     Post.findByIdAndRemove(request.params.id)
