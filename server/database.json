@@ -5,6 +5,7 @@
             "title": "My 1st Post",
             "text": "'I'm going to rush out and buy this book! I can totally see a clown version of Will Smith.'  \n- Hit the Spoof",
             "author": "jude",
+            "image_url": "https://www.tripsavvy.com/thmb/NrpZyAWL1TgfxvmENhSOK-os3Gs=/1885x1414/smart/filters:no_upscale()/OperaHouse-755d893182dc4811b608eb1a99792fd7.jpg",
             "likes": 20,
             "user": 1,
             "comments": [
@@ -16,6 +17,8 @@
             "id": 1,
             "title": "My 2nd Post",
             "text": "If I'd become a footballer, I wouldn't have even had a rifle on me.",
+            "author": "jude",
+            "image_url":"https://www.google.com/url?sa=i&url=https%3A%2F%2Ftw.sydney.com%2Fdestinations%2Fsydney%2Fsydney-city%2Fcity-centre%2Fattractions%2Fsydney-opera-house&psig=AOvVaw0VUtrp9asaaOOnA9aaVJ45&ust=1634890606809000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPjJy6GI2_MCFQAAAAAdAAAAABAQ",
             "likes": 345,
             "user": 1,
             "comments": [
@@ -27,6 +30,8 @@
             "id": 2,
             "title": "Dear reader...",
             "text": "Dear reader, I wish I could tell you that we stopped the werewolves.",
+            "author": "lewisthelouis",
+            "image_url":"https://ichef.bbci.co.uk/news/976/cpsprodpb/2027/production/_112713280_034db259-5007-4957-aa25-787b88c1e15b.jpg",
             "likes": 456,
             "user": 2,
             "comments": [
@@ -38,6 +43,8 @@
             "id": 3,
             "title": "I have two things...",
             "text": "I have two things on my mind: cherry pie and how I'm going to get home.",
+            "author": "lewisthelouis",
+            "image_url":"https://youimg1.tripcdn.com/target/10060n000000e4c6nEB47_C_750_420.jpg_.webp?proc=source%2Ftrip",
             "likes": 22,
             "user": 2,
             "comments": [
@@ -49,6 +56,8 @@
             "id": 4,
             "title": "I would have...",
             "text": "I would have defeated the zombies if it weren't for Estelle.",
+            "author": "lewisthelouis",
+            "image_url":"https://i.natgeofe.com/n/ea27bd3b-ab91-4997-99c6-3659179290cd/great-ocean-road-australia-590.jpg",
             "likes": 67,
             "user": 2,
             "comments": [
@@ -60,6 +69,7 @@
             "id": 5,
             "title": "My 3rd Post",
             "text": "There are only three things in life that truly matter: chocolate, politics and love.",
+            "author": "jude",
             "likes": 421,
             "user": 1,
             "comments": [

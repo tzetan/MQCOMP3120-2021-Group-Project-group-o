@@ -91,7 +91,7 @@ apiRouter.post("/api/login", async (request, response) => {
 
         return response
             .status(200)
-            .json({ token, username: user.username, name: user.name })
+            .json({ token, username: user.username, name: user.name, id:user.id })
     } else {
         return response.status(401).json({ error: "invalid username or passord" })
     }

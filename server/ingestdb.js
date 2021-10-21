@@ -12,6 +12,8 @@ data.posts.map(record => {
     console.log(record)
     const newPost = new Post({
         title: record.title,
+        image_url:record.image_url,
+        author:record.author,
         likes: record.likes,
         comments: record.comments,
         user:record.user
