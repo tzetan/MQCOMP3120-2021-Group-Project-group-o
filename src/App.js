@@ -42,8 +42,8 @@ function App() {
                     <PostForm user={user} updateFn={addNewPost}/>
                 </Route>
 
-                <Route path="/posts" > 
-                    <PostsHome />
+                <Route path="/Myposts" > 
+                    <PostsHome user={user}/>
                 </Route>
                 
                 <Route path="/"> 
