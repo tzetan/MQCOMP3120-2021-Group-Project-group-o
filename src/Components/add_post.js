@@ -39,7 +39,6 @@ const PostForm = ({user,updateFn}) => {
         setState('added')
     }
     
-    if(user){
         return (
             <div>
                 <br/>
@@ -70,9 +69,6 @@ const PostForm = ({user,updateFn}) => {
             {state === 'added' && (<AddedPost title={title} author={author} text={text} />)}
             </div>
         )
-    }else{
-        return (<p>Login to uplaod the posts</p>)
-    }
     
 }
 

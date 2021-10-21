@@ -29,13 +29,13 @@ function App() {
     <Router>
         <div className="App">
             <Nav/>
-            <Login user={user} setUser={setUser}/>
+            {/* <Login user={user} setUser={setUser}/> */}
 
             
             <Switch>
                 
                 <Route path="/posts/:id">
-                    <SinglePost />
+                    <SinglePost posts={posts}/>
                 </Route>
 
                 <Route path="/add_post">
