@@ -15,8 +15,8 @@ function Nav() {
                 <li>Home</li>
               </Link>
 
-              <Link to="/posts">
-                <li>Posts</li>
+              <Link to="/Myposts">
+                <li>My Posts</li>
               </Link>
 
               {isAuthenticated && (

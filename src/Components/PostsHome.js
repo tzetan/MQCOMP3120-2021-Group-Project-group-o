@@ -4,7 +4,7 @@ import Post from "./postList";
 import postservice from '../Services/route';
 
 
-const PostsHome = () => {
+const PostsHome = ({user}) => {
   
   const [posts, setposts] = useState([]);
 
@@ -52,9 +52,11 @@ const PostsHome = () => {
       }
       
   }
+  //const userpost=posts.filter(p => p.user==user.id)
 
-  console.log("response:")
-  return (
+
+   if(user){
+    return (
       <div className="App">
           <div>
             <h1 styles="text-align: center;">List of Posts!</h1>
@@ -62,13 +64,22 @@ const PostsHome = () => {
           <br/>
           
           <ul>
-            {posts.map((post) => (
+            
+            {posts.filter(p => p.user==user.id).map((post) => (
               <Post key={post.id} post={post} deleteFn={deletePost} addLike={addLike}/>  
             ))}
           </ul>
           
       </div>
-  );
+  )
+   }else{
+     return(
+       <p>login first</p>
+     )
+   }
+ 
+  
+  
 }
 
 export default PostsHome;

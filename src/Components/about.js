@@ -1,12 +1,59 @@
-import React from 'react';
+
 import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router} from "react-router-dom";
+import Post from "./postList";
+import postservice from '../Services/route';
 
 function About() {
+    const [posts, setposts] = useState([]);
+
+    useEffect(() => {
+      console.log("response:")
+      postservice.getAll()
+      .then(data => {
+        console.log("response: ", data)
+        setposts(data)
+      })
+    },
+    [])
+    const deletePost = (post) => {
+        console.log("delete", post)
+        postservice.delete(post.id)
+        .then(data => {
+          console.log("delete successfully")
+          const newposts = posts.filter(u => u.id !== post.id)
+          setposts(newposts)
+        })
+      }
+    
+      const addLike= (post) =>{
+        console.log("addVote",post)
+          const newPost={...post,likes:post.likes+1}
+          console.log("updata likes in item",newPost)
+          if(newPost.likes>=1){
+            console.log("working")
+            postservice.update(newPost)
+          .then(data=>{
+            console.log("got response",data)
+       
+            setposts(data)
+          })
+          }else{
+    
+          const newPost={...post,likes:1}
+          console.log("updata vote in item",newPost)
+          postservice.update(newPost)
+          .then(data=>{
+          console.log("got response",data)
+          setposts(data)    
+          })
+          }
+          
+      }
     return (
         <div className="App">
             <h1>Welcome!</h1>
-            <br/>
-            <br/>
             <br/>
 
             <h4>Share your thoughts with us and the rest of the world! Read other's blogs and intract with them.</h4>
@@ -14,7 +61,22 @@ function About() {
 
             <h5>Click on <Link to="/api/posts">Posts</Link> to view some of our top Posts</h5>
         
+            <div className="App">
+                <div>
+                  <h1 styles="text-align: center;">List of Posts!</h1>
+                </div>
+                <br/>
+                
+                <ul>
+                  
+                  {posts.map((post) => (
+                    <Post key={post.id} post={post} deleteFn={deletePost} addLike={addLike}/>  
+                  ))}
+                </ul>
+                
+            </div>
         </div>
+        
     );
 }
 

@@ -24,7 +24,9 @@ doConnect()
 
 const postSchema = new mongoose.Schema({
     title: String,
+    image_url:String,
     likes: Number,
+    author:String,
     comments: Array,
     user:Number
 })
