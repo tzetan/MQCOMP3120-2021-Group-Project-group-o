@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router} from "react-router-dom";
 import Post from "./postList";
 import postservice from '../Services/route';
+import {Link} from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
-const PostsHome = ({user}) => {
+const PostsHome = () => {
   
   const [posts, setposts] = useState([]);
+  const { user, loginWithRedirect } = useAuth0()
 
   useEffect(() => {
     console.log("response:")
@@ -54,29 +57,33 @@ const PostsHome = ({user}) => {
   }
   //const userpost=posts.filter(p => p.user==user.id)
 
-
-   if(user){
-    return (
-      <div className="App">
-          <div>
-            <h1 styles="text-align: center;">List of Posts!</h1>
-          </div>
-          <br/>
-          
-          <ul>
+    if(user){
+        return (
+        <div className="App">
+            <div>
+                <h1 styles="text-align: center;">List of Posts!</h1>
+            </div>
+            <br/>
             
-            {posts.filter(p => p.user==user.id).map((post) => (
-              <Post key={post.id} post={post} deleteFn={deletePost} addLike={addLike}/>  
-            ))}
-          </ul>
-          
-      </div>
-  )
-   }else{
-     return(
-       <p>login first</p>
-     )
-   }
+            <ul>
+                
+                {posts.filter(p => p.author===user.name).map((post) => (
+                <Post key={post.id} post={post} deleteFn={deletePost} addLike={addLike}/>  
+                ))}
+            </ul>
+            
+        </div>
+        )
+    } else {
+        return(
+            <>
+            <p>You must be logged in to view your posts!</p>
+            <Link to="/MyPosts"  onClick={() => loginWithRedirect()}>
+                Log In
+            </Link> 
+            </>
+        )
+    }
  
   
   

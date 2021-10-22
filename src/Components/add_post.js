@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import AddedPost from "../Posts/addedPost";
+import {Link} from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
-const PostForm = ({user,updateFn}) => {
+const PostForm = ({updateFn}) => {
 
     const initialState = {title: '', author: '', text: ''}
 
@@ -11,6 +13,8 @@ const PostForm = ({user,updateFn}) => {
     const [title, setTitle] = useState('') 
     const [author, setAuthor] = useState('') 
     const [text, setText] = useState('') 
+
+    const { user, loginWithRedirect } = useAuth0()
 
     const updateField = (event) => {
         const name = event.target.attributes.name.value
@@ -39,6 +43,7 @@ const PostForm = ({user,updateFn}) => {
         setState('added')
     }
     
+    if(user){
         return (
             <div>
                 <br/>
@@ -69,7 +74,16 @@ const PostForm = ({user,updateFn}) => {
             {state === 'added' && (<AddedPost title={title} author={author} text={text} />)}
             </div>
         )
-    
+    } else {
+        return (
+            <>
+            <p>Login to uplaod the posts!</p>
+            <Link to="/add_post"  onClick={() => loginWithRedirect()}>
+                Log In
+            </Link> 
+            </>
+        )
+    }
 }
 
 export default PostForm

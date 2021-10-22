@@ -15,25 +15,43 @@ function Nav() {
                 <li>Home</li>
               </Link>
 
-              <Link to="/Myposts">
+            <Link to="/Myposts">
                 <li>My Posts</li>
-              </Link>
+            </Link>
+            
+            <Link to="/add_post">
+                <li>Add Post</li>
+            </Link>
 
               {isAuthenticated && (
                 <>
-                <Link to="/add_post">
-                    <li>Add Post</li>
+
+                <Link to="/" onClick={() => logout()}>
+                    <li>Log Out?</li>
                 </Link>
 
-                <strong>Logged in as {user.nickname},  
-                    <button onClick={() => logout()}>Log Out?</button>
-                </strong>
+                <div >
+                    <img 
+                        width="40px" height="40px" 
+                        src={user.picture} 
+                        alt="User Profile"
+                        style={{borderRadius: "25px"}}
+                        />
+                    <div>
+                        <strong >
+                            Hi {user.name}, Welcome Back!
+                        </strong>
+                    </div>
 
+                </div>
+                
                 </>
               )}
 
               {!isAuthenticated && (
-                <button onClick={() => loginWithRedirect()}>Log In</button>
+                <Link to="/"  onClick={() => loginWithRedirect()}>
+                    <li>Log In</li>
+                </Link>
               )}
 
             </ul>
