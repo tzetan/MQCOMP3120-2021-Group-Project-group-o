@@ -8,12 +8,14 @@ import Login from "./Components/Login";
 import PostForm from "./Components/add_post";
 import postService from './Services/route';
 import SinglePost from './Components/post';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 function App() {
 
   const [posts, setPosts] = useState([])
-  const [user, setUser] = useState(null)
+//   const [user, setUser] = useState(null)
+    const { user } = useAuth0()
 
   const addNewPost = (newPosts) => {
     postService.create(newPosts, user)
@@ -29,13 +31,13 @@ function App() {
     <Router>
         <div className="App">
             <Nav/>
-            <Login user={user} setUser={setUser}/>
+            {/* <Login user={user} setUser={setUser}/> */}
 
             
             <Switch>
                 
                 <Route path="/posts/:id">
-                    <SinglePost />
+                    <SinglePost posts={posts}/>
                 </Route>
 
                 <Route path="/add_post">
