@@ -1,13 +1,12 @@
 import './App.css';
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, withRouter} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, withRouter} from "react-router-dom";
 import PostsHome from "./Components/PostsHome";
 import Nav from "./Components/nav";
 import About from "./Components/about";
-import Login from "./Components/Login";
 import PostForm from "./Components/add_post";
 import postService from './Services/route';
-import SinglePost from './Components/post';
+import SinglePost from './Components/SinglePost';
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -26,6 +25,40 @@ function App() {
     }
    )
   }
+  useEffect(() => {
+    console.log("response:")
+    postService.getAll()
+    .then(data => {
+      console.log("response: ", data)
+      setPosts(data)
+    })
+  },
+  [])
+
+  const addLike= (post) =>{
+    console.log("addVote",post)
+      const newPost={...post,likes:post.likes+1}
+      console.log("updata likes in item",newPost)
+      if(newPost.likes>=1){
+        console.log("working")
+        postService.update(newPost)
+      .then(data=>{
+        console.log("got response",data)
+   
+        setPosts(data)
+      })
+      }else{
+
+      const newPost={...post,likes:1}
+      console.log("updata vote in item",newPost)
+      postService.update(newPost)
+      .then(data=>{
+      console.log("got response",data)
+      setPosts(data)    
+      })
+      }
+      
+  }
 
   return (
     <Router>
@@ -37,7 +70,7 @@ function App() {
             <Switch>
                 
                 <Route path="/posts/:id">
-                    <SinglePost posts={posts}/>
+                <SinglePost post={posts} addLike={addLike}/>  
                 </Route>
 
                 <Route path="/add_post">

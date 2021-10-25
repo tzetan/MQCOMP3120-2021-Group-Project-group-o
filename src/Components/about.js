@@ -1,8 +1,7 @@
 
 import {Link} from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router} from "react-router-dom";
-import Post from "./postList";
+import PostsList from "./PostsList";
 import postservice from '../Services/route';
 
 function About() {
@@ -27,30 +26,6 @@ function About() {
         })
       }
     
-      const addLike= (post) =>{
-        console.log("addVote",post)
-          const newPost={...post,likes:post.likes+1}
-          console.log("updata likes in item",newPost)
-          if(newPost.likes>=1){
-            console.log("working")
-            postservice.update(newPost)
-          .then(data=>{
-            console.log("got response",data)
-       
-            setposts(data)
-          })
-          }else{
-    
-          const newPost={...post,likes:1}
-          console.log("updata vote in item",newPost)
-          postservice.update(newPost)
-          .then(data=>{
-          console.log("got response",data)
-          setposts(data)    
-          })
-          }
-          
-      }
     return (
         <div className="App">
             <h1>Welcome!</h1>
@@ -59,7 +34,7 @@ function About() {
             <h4>Share your thoughts with us and the rest of the world! Read other's blogs and intract with them.</h4>
             <h6>Let people know you like their writing and give them ideas.</h6>
 
-            <h5>Click on <Link to="/api/posts">Posts</Link> to view some of our top Posts</h5>
+            <h5>Click on <Link to="/Myposts">MyPosts</Link> to view some of our top Posts</h5>
         
             <div className="App">
                 <div>
@@ -70,7 +45,7 @@ function About() {
                 <ul>
                   
                   {posts.map((post) => (
-                    <Post key={post.id} post={post} deleteFn={deletePost} addLike={addLike}/>  
+                    <PostsList key={post.id} post={post} deleteFn={deletePost}/>  
                   ))}
                 </ul>
                 
