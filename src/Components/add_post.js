@@ -7,12 +7,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const PostForm = ({updateFn}) => {
 
-    const initialState = {title: '', author: '', text: ''}
+    const initialState = {title: '', content: '', picUrl: ''}
 
     const [formInfo, setFormInfo] = useState(initialState)
     const [title, setTitle] = useState('') 
-    const [author, setAuthor] = useState('') 
-    const [text, setText] = useState('') 
+    const [content, setContent] = useState('') 
+    const [picUrl, setpicUrl] = useState('') 
 
     const { user, loginWithRedirect } = useAuth0()
 
@@ -21,10 +21,10 @@ const PostForm = ({updateFn}) => {
         console.log(name, event.target.value)
         if (name === "title") {
             setFormInfo({...formInfo, title: event.target.value})
-        } else if (name === "author") {
-            setFormInfo({...formInfo, author: event.target.value})
-        } else if (name === "text") {
-            setFormInfo({...formInfo, text: event.target.value})
+        } else if (name === "content") {
+            setFormInfo({...formInfo, content: event.target.value})
+        } else if (name === "picUrl") {
+            setFormInfo({...formInfo, picUrl: event.target.value})
         }
     }
     const [state, setState] = useState('start') 
@@ -34,12 +34,12 @@ const PostForm = ({updateFn}) => {
         console.log("Form submitted: ", formInfo)
 
         setTitle(`${formInfo.title}`)
-        setAuthor(`${formInfo.author}`)
-        setText(`${formInfo.text}`)
+        setContent(`${formInfo.content}`)
+        setpicUrl(`${formInfo.picUrl}`)
 
         updateFn(formInfo)
         setFormInfo(initialState)
-        alert(`Poem "${formInfo.title} ${formInfo.author}" is now added! Click OK to visit the Poem.`)
+        alert(`Poem "${formInfo.title}" is now added! Click OK to visit the Poem.`)
         setState('added')
     }
     
@@ -48,30 +48,26 @@ const PostForm = ({updateFn}) => {
             <div>
                 <br/>
             <form onSubmit={formHandler}>
-                <ul id="add_form">
-                    <li>
-                        <label htmlFor="title">Post Subject</label>
-                        <br/>
-                        <input name="title" onChange={updateField}></input>
-                    </li>
-                    <br/>
-                    <li>
-                        <label htmlFor="author">Post Author</label>
-                        <br/>
-                        <input name="author" onChange={updateField}></input>
-                    </li>
-                    <br/>
-                    <li>
-                        <label htmlFor="text">Text</label>
-                        <br/>
-                        <input name="text" onChange={updateField}></input>
-                    </li>
-                    <br/>
-                </ul>
+               
+                   
+            <label htmlFor="title">Post Subject</label>
+            <input className="u-full-width" placeholder="enter post title" name="title" onChange={updateField}></input>
+                   
+           
+                 
+            <label  htmlFor="content">Content</label>
+                    
+            <input className="u-full-width" placeholder="enter content" name="content" onChange={updateField}></input>
+                
+                  
+            <label htmlFor="picUrl">PictureURL</label>
+            <input className="u-full-width" placeholder="enter picture url" name="picUrl" onChange={updateField}></input>
+              
+              
     
-                <button type="submit">Submit</button>
+            <button type="submit">Submit</button>
             </form>
-            {state === 'added' && (<AddedPost title={title} author={author} text={text} />)}
+            {state === 'added' && (<AddedPost title={title} content={content} picUrl={picUrl} />)}
             </div>
         )
     } else {
