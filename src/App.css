@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -43,6 +46,7 @@
   align-items: right; 
   min-height: 10vh;
   padding-right: 10px;
+  padding-top: 20px;
   background: #282c34 ;
   color: white;
 }
@@ -57,6 +61,7 @@
 
 .nav-Links li{
   color: white;
+  font-size: 24px;
 }
 
 .postDetail {
@@ -65,4 +70,32 @@
 
 .add_form {
   list-style-type: none;
+}
+
+#spImg{
+  width:400px; 
+  height:300px;
+  border: black double 3px;
+  border-radius: 10px;
+}
+
+#mypost{
+  display: inline;
+}
+
+#mypostTable{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#allPost{
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+#topTable{
+  table-layout: fixed;
+  width: 90%;
+  float: right;
+
 }
