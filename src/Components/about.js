@@ -2,30 +2,58 @@
 import {Link} from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import PostsList from "./PostsList";
-import postservice from '../Services/route';
+import TopPosts from"./TopPosts"
+import postService from '../Services/route';
 
 function About() {
-    const [posts, setposts] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
       console.log("response:")
-      postservice.getAll()
+      postService.getAll()
       .then(data => {
         console.log("response: ", data)
-        setposts(data)
+        setPosts(data)
       })
     },
     [])
+
+
+  const addLike= (post) =>{
+    console.log("addVote",post)
+      const newPost={...post,likes:post.likes+1}
+      console.log("updata likes in item",newPost)
+      if(newPost.likes>=1){
+        console.log("working")
+        postService.update(newPost)
+      .then(data=>{
+        console.log("got response",data)
+        setPosts(data)
+      })
+      }else{
+
+      const newPost={...post,likes:1}
+      console.log("updata vote in item",newPost)
+      postService.update(newPost)
+      .then(data=>{
+      console.log("got response",data)
+      setPosts(data)    
+      })
+      }
+      
+  }
+
     const deletePost = (post) => {
         console.log("delete", post)
-        postservice.delete(post.id)
+        postService.delete(post.id)
         .then(data => {
           console.log("delete successfully")
           const newposts = posts.filter(u => u.id !== post.id)
-          setposts(newposts)
+          setPosts(newposts)
         })
       }
     
+
     return (
         <div className="App">
             <h1>Welcome!</h1>
@@ -36,19 +64,28 @@ function About() {
 
             <h5>Click on <Link to="/Myposts">MyPosts</Link> to view some of our top Posts</h5>
         
-            <div className="App">
+            <div className="seven columns">
                 <div>
                   <h1 styles="text-align: center;">List of Posts!</h1>
                 </div>
                 <br/>
-                
-                <ul>
                   
-                  {posts.map((post) => (
+                {posts.map((post) => (
                     <PostsList key={post.id} post={post} deleteFn={deletePost}/>  
                   ))}
-                </ul>
-                
+           
+            </div>
+            <div className="four columns">
+                <div>
+                  <br></br>
+                  <h3 styles="text-align: center;">Top 5 Posts!</h3>
+                </div>
+                <br/>
+                  
+          
+                <TopPosts  posts={posts} addLike={addLike}/>  
+               
+           
             </div>
         </div>
         

@@ -40,18 +40,19 @@ const PostsHome = () => {
             <div>
                 <h1 styles="text-align: center;">List of Posts!</h1>
             </div>
-            <br/>
+         
             
-            <ul>
-                
+           
+            <div>
                 {posts.filter(p => p.author===user.name).map((post) => (
                 <PostsList key={post.id} post={post} deleteFn={deletePost} />  
                 ))}
-            </ul>
           
-            
-            
+            </div>   
         </div>
+        
+        
+        
         )
     } else {
         return(

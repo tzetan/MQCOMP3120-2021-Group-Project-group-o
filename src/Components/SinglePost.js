@@ -11,10 +11,10 @@ const SinglePost = ({post, addLike}) => {
     return (
       <div> 
          <h1> Single Post</h1>
-              <img width="600px" height="590px"  src={DisplaySinglePost.image_url}></img>
-              <li id ="Title">Title: {DisplaySinglePost.title}</li> 
-              <li>By {DisplaySinglePost.author}</li>
-              <li>Comments {DisplaySinglePost.comments}</li>
+              <img id="spImg" src={DisplaySinglePost.image_url}></img>
+              <p id ="Title">Title: {DisplaySinglePost.title} By {DisplaySinglePost.author}</p> 
+              <p>Content: {DisplaySinglePost.text}</p>
+              <p>Comments {DisplaySinglePost.comments}</p>
               <button onClick={()=> addLike(DisplaySinglePost)}>Like {DisplaySinglePost.likes} </button> 
    
       </div>
