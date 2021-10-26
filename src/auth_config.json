@@ -1,0 +1,6 @@
+{
+    "domain": "dev-82t3bw4d.us.auth0.com",
+    "clientId": "61JsIaN7v9qs6TXWuw6eNtIMxLChQ2Xn",
+    "audience": "https://dev-82t3bw4d.us.auth0.com/api/v2/",
+    "scope": "read:current_user update:current_user_metadata"
+}

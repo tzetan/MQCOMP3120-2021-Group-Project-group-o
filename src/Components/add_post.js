@@ -7,12 +7,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const PostForm = ({updateFn}) => {
 
-    const initialState = {title: '', content: '', picUrl: ''}
+    const initialState = {title: '', content: '', picUrl: '', author: ''}
 
     const [formInfo, setFormInfo] = useState(initialState)
     const [title, setTitle] = useState('') 
     const [content, setContent] = useState('') 
-    const [picUrl, setpicUrl] = useState('') 
+    const [picUrl, setpicUrl] = useState('')  
 
     const { user, loginWithRedirect } = useAuth0()
 
@@ -20,7 +20,7 @@ const PostForm = ({updateFn}) => {
         const name = event.target.attributes.name.value
         console.log(name, event.target.value)
         if (name === "title") {
-            setFormInfo({...formInfo, title: event.target.value})
+            setFormInfo({...formInfo, title: event.target.value, author: user.name})
         } else if (name === "content") {
             setFormInfo({...formInfo, content: event.target.value})
         } else if (name === "picUrl") {
@@ -28,11 +28,11 @@ const PostForm = ({updateFn}) => {
         }
     }
     const [state, setState] = useState('start') 
-
+    
     const formHandler = (event) => {
         event.preventDefault()
         console.log("Form submitted: ", formInfo)
-
+        
         setTitle(`${formInfo.title}`)
         setContent(`${formInfo.content}`)
         setpicUrl(`${formInfo.picUrl}`)

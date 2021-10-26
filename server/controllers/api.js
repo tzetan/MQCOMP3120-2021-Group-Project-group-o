@@ -1,8 +1,12 @@
 const express = require("express")
 const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
+// const jwt = require("jsonwebtoken")
 const fs = require("fs")
 const Post = require("../models/posts")
+
+const jwksRsa = require("jwks-rsa")
+const jwt = require('express-jwt')
+const authConfig = require("../../src/auth_config.json")
 
 const SECRET = "a secret string"
 
@@ -14,13 +18,24 @@ const getUser = (username) => {
     return data.users.filter((u) => u.username === username)[0]
 }
 
-const getTokenFrom = (request) => {
-    const authorization = request.get("authorization")
-    if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    return authorization.substring(7)
-    }
-    return null
-}
+// const getTokenFrom = (request) => {
+//     const authorization = request.get("authorization")
+//     if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+//     return authorization.substring(7)
+//     }
+//     return null
+// }
+const checkJwt = jwt({
+    secret: jwksRsa.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
+    }),
+    audience: authConfig.audience,
+    issuer: `https://${authConfig.domain}/`,
+    algorithms: ["RS256"]
+  });
 
 const apiRouter = express.Router()
 
@@ -39,22 +54,25 @@ apiRouter.get("/api/posts/:id", (request, response) => {
     })    
 })
 
-apiRouter.post("/api/posts", (request, response) => {
-    const token = getTokenFrom(request)
-    const decodedToken = jwt.verify(token, SECRET)
-    console.log(decodedToken)
+apiRouter.post("/api/posts",  async (request, response, next) => {
+    // const token = getTokenFrom(request)
+    // const decodedToken = jwt.verify(token, SECRET)
+    // console.log(decodedToken)
 
-    if (!token || !decodedToken.id) {
-        return response.status(401).json({error: "permission denied"})
-    }
+    // if (!token || !decodedToken.id) {
+    //     return response.status(401).json({error: "permission denied"})
+    // }
+    console.log(checkJwt)
 
     const body = request.body
 
     const newPost = new Post({
         title: body.title,
+        text: body.content,
         likes: body.likes,
         comments: body.comments,
-        user: decodedToken.id
+        author: body.author
+        // user: decodedToken.id
     })
 
     if (!body.title) {
@@ -65,6 +83,7 @@ apiRouter.post("/api/posts", (request, response) => {
         newPost.save().then(result => {
             response.json(result)
         })
+            .catch(error => next(error))
     }
 })
 

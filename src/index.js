@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
+import AuthConfig from "./auth_config.json";
 
 ReactDOM.render(
     <Auth0Provider
-        domain="dev-82t3bw4d.us.auth0.com"
-        clientId="61JsIaN7v9qs6TXWuw6eNtIMxLChQ2Xn"
+        domain={AuthConfig.domain}
+        clientId={AuthConfig.clientId}
         redirectUri={window.location.origin}
+        audience={AuthConfig.audience}
+        scope={AuthConfig.scope}
     >
         <BrowserRouter>
             <App />
