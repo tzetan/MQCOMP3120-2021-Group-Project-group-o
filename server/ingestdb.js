@@ -14,6 +14,7 @@ data.posts.map(record => {
         title: record.title,
         image_url:record.image_url,
         author:record.author,
+        text:record.text,
         likes: record.likes,
         comments: record.comments,
         user:record.user
