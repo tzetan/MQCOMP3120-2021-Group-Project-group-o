@@ -25,6 +25,8 @@ function App() {
     }
    )
   }
+
+ 
   useEffect(() => {
     console.log("response:")
     postService.getAll()
@@ -34,6 +36,25 @@ function App() {
     })
   },
   [])
+
+  const addComment= (post,formInfo) =>{
+    console.log("addComment",post)
+    console.log("addVote",formInfo)
+      const newPost={...post,comments:post.comments.concat(formInfo)}
+      console.log("updata likes in item",newPost)
+ 
+        console.log("working")
+        postService.update(newPost)
+       .then(data=>{
+        console.log("got response",data)
+   
+        setPosts(data)
+      })
+      
+  
+      
+       
+  }
 
   const addLike= (post) =>{
     console.log("addVote",post)
@@ -70,7 +91,7 @@ function App() {
             <Switch>
                 
                 <Route path="/posts/:id">
-                <SinglePost post={posts} addLike={addLike}/>  
+                <SinglePost post={posts} addComment={addComment} addLike={addLike}/>  
                 </Route>
 
                 <Route path="/add_post">
