@@ -86,6 +86,8 @@
 #mypostTable{
   margin-left: auto;
   margin-right: auto;
+  table-layout: fixed;
+  width: 500px;
 }
 
 #allPost{
@@ -97,5 +99,20 @@
   table-layout: fixed;
   width: 90%;
   float: right;
+
+}
+#addPost{
+  border: black double 3px;
+  border-radius: 10px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+
+}
+#addPost img{
+  width:425px;
+  height:420px;
+  border-radius: 5px;
 
 }

@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React,{ useState } from "react";
 import {withRouter, useParams } from "react-router-dom"
 
@@ -36,7 +35,7 @@ const SinglePost = ({post, addLike,addComment}) => {
     return (
       <div> 
          <h1> Single Post</h1>
-              <img id="spImg" src={DisplaySinglePost.image_url}></img>
+              <img id="spImg" src={DisplaySinglePost.image_url} alt='postimg'></img>
               <p id ="Title">Title: {DisplaySinglePost.title} By {DisplaySinglePost.author}</p> 
               <p>Content: {DisplaySinglePost.text}</p>
               <button onClick={()=> addLike(DisplaySinglePost)}>Like {DisplaySinglePost.likes} </button> 

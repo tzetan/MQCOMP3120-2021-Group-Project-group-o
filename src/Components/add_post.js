@@ -7,12 +7,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const PostForm = ({updateFn}) => {
 
-    const initialState = {title: '', content: '', picUrl: '', author: ''}
+    const initialState = {title: '', content: '', image_url: '', author: ''}
 
     const [formInfo, setFormInfo] = useState(initialState)
     const [title, setTitle] = useState('') 
     const [content, setContent] = useState('') 
-    const [picUrl, setpicUrl] = useState('')  
+    const [image_url, setimage_url] = useState('')  
 
     const { user, loginWithRedirect } = useAuth0()
 
@@ -23,8 +23,8 @@ const PostForm = ({updateFn}) => {
             setFormInfo({...formInfo, title: event.target.value, author: user.name})
         } else if (name === "content") {
             setFormInfo({...formInfo, content: event.target.value})
-        } else if (name === "picUrl") {
-            setFormInfo({...formInfo, picUrl: event.target.value})
+        } else if (name === "image_url") {
+            setFormInfo({...formInfo, image_url: event.target.value})
         }
     }
     const [state, setState] = useState('start') 
@@ -35,7 +35,7 @@ const PostForm = ({updateFn}) => {
         
         setTitle(`${formInfo.title}`)
         setContent(`${formInfo.content}`)
-        setpicUrl(`${formInfo.picUrl}`)
+        setimage_url(`${formInfo.image_url}`)
 
         updateFn(formInfo)
         setFormInfo(initialState)
@@ -51,23 +51,24 @@ const PostForm = ({updateFn}) => {
                
                    
             <label htmlFor="title">Post Subject</label>
-            <input className="u-full-width" placeholder="enter post title" name="title" onChange={updateField}></input>
+            <input className="u-half-width" placeholder="enter post title" name="title" onChange={updateField}></input>
                    
            
                  
             <label  htmlFor="content">Content</label>
                     
-            <input className="u-full-width" placeholder="enter content" name="content" onChange={updateField}></input>
+            <input className="u-half-width" placeholder="enter content" name="content" onChange={updateField}></input>
                 
                   
-            <label htmlFor="picUrl">PictureURL</label>
-            <input className="u-full-width" placeholder="enter picture url" name="picUrl" onChange={updateField}></input>
+            <label htmlFor="image_url">PictureURL</label>
+            <input className="u-half-width" placeholder="enter picture url" name="image_url" onChange={updateField}></input>
               
+             <br></br> 
               
     
             <button type="submit">Submit</button>
             </form>
-            {state === 'added' && (<AddedPost title={title} content={content} picUrl={picUrl} />)}
+            {state === 'added' && (<AddedPost title={title} content={content} image_url={image_url} />)}
             </div>
         )
     } else {

@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter as Router} from "react-router-dom";
 
 
-const AddedPoem = ({title, content,picUrl}) => {
+const AddedPoem = ({title, content,image_url}) => {
 
 
   return (
     <Router>
-      <div> 
-        <img width="600px" height="590px"  src={picUrl}></img>
+      <div id="addPost"> 
+        <img width="420px" height="420px"  src={image_url} alt='postimg'></img>
         <h3>{title}</h3>
         <h5>{content}</h5>
     

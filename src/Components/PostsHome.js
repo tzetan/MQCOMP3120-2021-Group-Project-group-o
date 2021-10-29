@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router} from "react-router-dom";
 import PostsList from "./PostsList";
 import postservice from '../Services/route';
 import {Link} from "react-router-dom";

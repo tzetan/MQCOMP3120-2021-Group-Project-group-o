@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router} from "react-router-dom";
+import React from "react";
 import {Link} from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+
 
 
 const TopPosts = ({posts,addLike}) => {
@@ -21,13 +20,15 @@ return (
     <br/>
       
     {top.map((post) => (
-           <table id="topTable">
+           <table id="topTable"  key={post.id} >
+              <tbody>
            <tr>
-           <th> <img width="50px" height="50px"  src={post.image_url}></img></th>
+           <th> <img width="50px" height="50px"  src={post.image_url} alt='postimg'></img></th>
            <th key={post.id}><Link to={`/posts/${post.id}`}>{post.title}</Link></th>
            <th>By: {post.author}</th>
            <th><button onClick={()=> addLike(post)}>Like {post.likes} </button> </th>
            </tr>
+           </tbody>
            </table> 
       ))}
 

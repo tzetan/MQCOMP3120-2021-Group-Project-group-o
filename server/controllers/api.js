@@ -68,6 +68,7 @@ apiRouter.post("/api/posts",  async (request, response, next) => {
         title: body.title,
         text: body.content,
         likes: body.likes,
+        image_url:body.image_url,
         comments: body.comments,
         author: body.author
         // user: decodedToken.id

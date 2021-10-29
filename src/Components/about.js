@@ -9,7 +9,6 @@ function About() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-      console.log("response:")
       postService.getAll()
       .then(data => {
         console.log("response: ", data)
@@ -83,7 +82,7 @@ function About() {
                 <br/>
                   
           
-                <TopPosts  posts={posts} addLike={addLike}/>  
+                <TopPosts posts={posts} addLike={addLike}/>  
                
            
             </div>
