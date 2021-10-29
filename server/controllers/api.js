@@ -41,7 +41,6 @@ const apiRouter = express.Router()
 
 apiRouter.get("/api/posts", (request, response) => {
     Post.find({}).then((result) => {
-        console.log(result)
         response.json(result)
     })
 })
@@ -49,7 +48,6 @@ apiRouter.get("/api/posts", (request, response) => {
 apiRouter.get("/api/posts/:id", (request, response) => {
     Post.findById(request.params.id)
     .then((result)=>{
-        console.log(result)
         response.json(result)
     })    
 })

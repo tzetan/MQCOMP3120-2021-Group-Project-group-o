@@ -6,7 +6,7 @@
  const supertest=require('supertest')
  const fs=require('fs')
  const app=require('../app')
- const Post=require("../models/posts.js")
+ const Post=require("../models/posts")
 
  const api=supertest(app)
  
@@ -55,7 +55,7 @@
              .expect(200)
              .expect('Content-Type',/application\/json/)
          const response=await api.get('/api/posts')
-         expect(response.body).toHaveLength(8)
+         expect(response.body).toHaveLength(7)
      })
      afterEach(async()=>{
          await Post.deleteMany({})
