@@ -15,10 +15,8 @@
         
         postService.getAll().then(data=>{
             expect(data).toBe(thedata)
-
             expect(axios.get.mock.calls).toHaveLength(1)
             expect(axios.get.mock.calls[0][0]).toBe('/api/posts')
-
             done()
         })
     })
@@ -30,7 +28,7 @@
                   text:"hop"  ,
                   image_url:"working"
                   
-            }
+        }
         axios.post.mockResolvedValue({data:thedata})
 
         postService.create(thePost)
@@ -113,7 +111,4 @@
             done()
         })
     })
-
-   
-
  })

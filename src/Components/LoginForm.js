@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import postservice from '../Services/route';
 
+//Returns a form to allow users to login.
 const LoginForm = ({user, setUser}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')

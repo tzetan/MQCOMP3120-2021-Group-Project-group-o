@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router} from "react-router-dom";
 
-
+//Display the post content if added successfully 
 const AddedPoem = ({title, content,image_url}) => {
-
-
   return (
     <Router>
       <div id="addPost"> 
@@ -15,7 +13,6 @@ const AddedPoem = ({title, content,image_url}) => {
       </div>
     </Router>
   )
-
 }
 
 export default AddedPoem

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import '../App.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
+//Displays a navigation bar on top of every page.
 function Nav() {
     
     const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0()
@@ -14,23 +15,18 @@ function Nav() {
               <Link to="/">
                 <li>Home</li>
               </Link>
-
-            <Link to="/Myposts">
+              <Link to="/Myposts">
                 <li>My Posts</li>
-            </Link>
-            
-            <Link to="/add_post">
+              </Link>
+              <Link to="/add_post">
                 <li>Add Post</li>
-            </Link>
-
+              </Link>
               {isAuthenticated && (
                 <>
-
-                <Link to="/" onClick={() => logout()}>
+              <Link to="/" onClick={() => logout()}>
                     <li>Log Out?</li>
-                </Link>
-
-                <div >
+              </Link>
+                <div>
                     <img 
                         width="40px" height="40px" 
                         src={user.picture} 
@@ -42,9 +38,7 @@ function Nav() {
                             Hi {user.name}, Welcome Back!
                         </strong>
                     </div>
-
                 </div>
-                
                 </>
               )}
 
@@ -53,9 +47,7 @@ function Nav() {
                     <li>Log In</li>
                 </Link>
               )}
-
             </ul>
-        
         </div>
     );
 }

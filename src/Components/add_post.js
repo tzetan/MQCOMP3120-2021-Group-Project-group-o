@@ -4,16 +4,14 @@ import AddedPost from "../Posts/addedPost";
 import {Link} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
+//Returns a form to allow users to add a post.
 const PostForm = ({updateFn}) => {
 
     const initialState = {title: '', content: '', image_url: '', author: ''}
-
     const [formInfo, setFormInfo] = useState(initialState)
     const [title, setTitle] = useState('') 
     const [content, setContent] = useState('') 
     const [image_url, setimage_url] = useState('')  
-
     const { user, loginWithRedirect } = useAuth0()
 
     const updateField = (event) => {
@@ -27,6 +25,7 @@ const PostForm = ({updateFn}) => {
             setFormInfo({...formInfo, image_url: event.target.value})
         }
     }
+    
     const [state, setState] = useState('start') 
     
     const formHandler = (event) => {
@@ -49,22 +48,17 @@ const PostForm = ({updateFn}) => {
                 <br/>
             <form onSubmit={formHandler}>
                
-                   
             <label htmlFor="title">Post Subject</label>
-            <input className="u-half-width" placeholder="enter post title" name="title" onChange={updateField}></input>
-                   
-           
-                 
+            <input className="u-half-width" placeholder="Enter Post Title" name="title" onChange={updateField}></input>
+                      
             <label  htmlFor="content">Content</label>
                     
-            <input className="u-half-width" placeholder="enter content" name="content" onChange={updateField}></input>
-                
+            <input className="u-half-width" placeholder="Enter Content" name="content" onChange={updateField}></input>
                   
             <label htmlFor="image_url">PictureURL</label>
-            <input className="u-half-width" placeholder="enter picture url" name="image_url" onChange={updateField}></input>
+            <input className="u-half-width" placeholder="Enter Picture URL" name="image_url" onChange={updateField}></input>
               
              <br></br> 
-              
     
             <button type="submit">Submit</button>
             </form>
@@ -74,7 +68,7 @@ const PostForm = ({updateFn}) => {
     } else {
         return (
             <>
-            <p>Login to uplaod the posts!</p>
+            <p>Login to upload the posts!</p>
             <Link to="/add_post"  onClick={() => loginWithRedirect()}>
                 Log In
             </Link> 

@@ -4,11 +4,11 @@ import postservice from '../Services/route';
 import {Link} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
+//Displays a list of posts on My Post page.
 const PostsHome = () => {
   
   const [posts, setposts] = useState([]);
-  const { user, loginWithRedirect } = useAuth0()
+  const {user, loginWithRedirect} = useAuth0()
 
   useEffect(() => {
     console.log("response:")
@@ -29,8 +29,6 @@ const PostsHome = () => {
       setposts(newposts)
     })
   }
-
-
   //const userpost=posts.filter(p => p.user==user.id)
 
     if(user){
@@ -39,33 +37,25 @@ const PostsHome = () => {
             <div>
                 <h1 styles="text-align: center;">List of Posts!</h1>
             </div>
-         
-            
-           
+      
             <div>
                 {posts.filter(p => p.author===user.name).map((post) => (
                 <PostsList key={post.id} post={post} deleteFn={deletePost} />  
                 ))}
-          
-            </div>   
+            </div>  
+
         </div>
-        
-        
-        
         )
     } else {
         return(
             <>
             <p>You must be logged in to view your posts!</p>
-            <Link to="/MyPosts"  onClick={() => loginWithRedirect()}>
+            <Link to="/MyPosts" onClick={() => loginWithRedirect()}>
                 Log In
             </Link> 
             </>
         )
-    }
- 
-  
-  
+     }
 }
 
 export default PostsHome;
