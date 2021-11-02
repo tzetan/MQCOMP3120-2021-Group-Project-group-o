@@ -1,6 +1,9 @@
 {
   "name": "group-web-project-group-o",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.18.0"
+  },
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
@@ -28,7 +31,7 @@
   "scripts": {
     "start": "cross-env PORT=3000 react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env NODE_ENV=test jest --verbose --coverage --testPathPattern server",
+    "test": "cross-env NODE_ENV=test jest --verbose --coverage --testPathPattern server & node server/ingestdb.js",
     "testreact": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "cross-env NODE_ENV=development nodemon server/server.js",
