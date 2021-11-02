@@ -2,7 +2,7 @@
   "name": "group-web-project-group-o",
   "version": "0.1.0",
   "engines": {
-    "node": "14.18.0"
+    "node": "14.x"
   },
   "private": true,
   "dependencies": {
