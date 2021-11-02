@@ -27,16 +27,18 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "cross-env PORT=3000 react-scripts start",
-    "build": "react-scripts build",
-    "test": "cross-env NODE_ENV=test jest --verbose --coverage --testPathPattern server & node server/ingestdb.js",
-    "testreact": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "cross-env NODE_ENV=development nodemon server/server.js",
-    "production": "cross-env NODE_ENV=production nodemon server/server.js"
-  },
+      "start": "cross-env PORT=3000 react-scripts start",
+      "build": "react-scripts build",
+      "test": "cross-env NODE_ENV=test jest --verbose --coverage --testPathPattern server & node server/ingestdb.js",
+      "testreact": "react-scripts test",
+      "eject": "react-scripts eject",
+      "server": "cross-env NODE_ENV=development nodemon server/server.js",
+      "production": "cross-env NODE_ENV=production nodemon server/server.js",
+      "deploy": "git push heroku master",
+      "logs": "heroku logs --tail"
+    },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
