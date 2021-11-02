@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, withRouter} from "react-router-dom";
 import PostsHome from "./Components/PostsHome";
 import Nav from "./Components/nav";
-import About from "./Components/About";
+import About from "./Components/about";
 import PostForm from "./Components/add_post";
 import postService from './Services/route';
 import SinglePost from './Components/SinglePost';
