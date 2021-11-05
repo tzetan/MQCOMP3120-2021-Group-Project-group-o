@@ -18,13 +18,6 @@ const getUser = (username) => {
     return data.users.filter((u) => u.username === username)[0]
 }
 
-// const getTokenFrom = (request) => {
-//     const authorization = request.get("authorization")
-//     if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-//     return authorization.substring(7)
-//     }
-//     return null
-// }
 const checkJwt = jwt({
     secret: jwksRsa.expressJwtSecret({
       cache: true,
@@ -53,13 +46,6 @@ apiRouter.get("/api/posts/:id", (request, response) => {
 })
 
 apiRouter.post("/api/posts",  async (request, response, next) => {
-    // const token = getTokenFrom(request)
-    // const decodedToken = jwt.verify(token, SECRET)
-    // console.log(decodedToken)
-
-    // if (!token || !decodedToken.id) {
-    //     return response.status(401).json({error: "permission denied"})
-    // }
     console.log(checkJwt)
 
     const body = request.body
@@ -71,7 +57,6 @@ apiRouter.post("/api/posts",  async (request, response, next) => {
         image_url:body.image_url,
         comments: body.comments,
         author: body.author
-        // user: decodedToken.id
     })
 
     if (!body.title) {
