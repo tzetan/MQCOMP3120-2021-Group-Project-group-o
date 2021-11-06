@@ -35,7 +35,7 @@
       "eject": "react-scripts eject",
       "server": "cross-env NODE_ENV=development nodemon server/server.js",
       "production": "cross-env NODE_ENV=production nodemon server/server.js",
-      "deploy": "git push heroku master",
+      "deploy": "git push heroku main",
       "logs": "heroku logs --tail"
     },
   "proxy": "http://localhost:3001",
