@@ -41,48 +41,43 @@ Website has a home login page and the user should be able to initially login. Ho
  
 ### A description of what you have been able to implement in this MVP, use your milestones to highlight what you've achieved
 
-```
-Sprint 1 - Week 9
-·   Set-up of application
-·   Start with a JSON file (not implementing MongoDB yet). 
-·   Get github ready with base code. 
-·   Set-up environment
+- Sprint 1 - Week 9
+    - Set-up of application
+    - Start with a JSON file (not implementing MongoDB yet). 
+    - Get github ready with base code. 
+    - Set-up environment
 
 This week we created a simple React project and discussed what kind of data should be contained in a JSON file. In terms of back-end code, there include app.js, api.js, server.js and middleware.js. We also added some server code like ingestdb.js and models, which helped us to easily connect the MongoDB database afterwards.
 
-
-Sprint 2 - Week 10
-·   Create About Page and NavBar
-·   Login function
-·   View list of posts.
-·   Set-up Backend
+- Sprint 2 - Week 10
+    - Create About Page and NavBar
+    - Login function
+    - View list of posts.
+    - Set-up Backend
 
 Our plan for this week is the user will see the short description on the home page. Then, when the user clicks on the posts button on the top of the navigation bar, there will show a list of posts and the URL path name will be changed. Furmore, the user can login to the page after they fill in the log-in form and submit it.
 
-
-Sprint 3 - Week 11
-·   Add a post
-·   Like posts 
-·   Delete posts
-·   Add comments under posts (individual post)
-·   Start writing tests
+- Sprint 3 - Week 11
+    - Add a post
+    - Like posts 
+    - Delete posts
+    - Add comments under posts (individual post)
+    - Start writing tests
 
 The webpage includes more functions that allow the user to explore. The login-user can add posts, view and delete their own post. On the home page, there will show all posts and the user can increase the number of likes and leave a comment. In addition, we import the Skeleton, so the webpage will look more aesthetic.
 
-
-Sprint 4 - Week 12
-·   Finalise and add extra features (different user login, refactor to store user info in MongoDB)
-·   Show the user profile picture.
-·   UI Upgrade - Frontend team
-·   Add tests - Frontend and backend teams
-·   Final fixes and deploy on Heroku - Backend Team
+- Sprint 4 - Week 12
+    - Finalise and add extra features (different user login, refactor to store user info in MongoDB)
+    - Show the user profile picture.
+    - UI Upgrade - Frontend team
+    - Add tests - Frontend and backend teams
+    - Final fixes and deploy on Heroku - Backend Team
 
 The user can login the webpage through Auth0 and the user profile picture and name will be shown on the top right corner. 
 We also focused on the front-end and back-end testing, CSS code,  fixed the warning and error message and deployed the application on Heroku 
 The link below can be access to our page
 (https://murmuring-everglades-78489.herokuapp.com/)
  
-```
  
 ## A guide to the project source code - where should we look for what you have done
 The following are the key pages of the frontend application according to the [screenshots](https://github.com/MQCOMP3120-2021/group-web-project-group-o/tree/main/Screenshots) provided, and the elements of the backend code.
